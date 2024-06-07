@@ -42,4 +42,5 @@ pidof -q picom || { picom --config "$HOME"/.config/picom/picom.conf & }
 # Dunst
 dunst -config "$HOME"/.config/bspwm/dunstrc &
 
-xrandr --output HDMI-1 --mode 1920x1080 --rate 74.99
+# Uncomment the following if you have same resolution and refresh rate
+#xrandr --output HDMI-1 --mode 1920x1080 --rate 74.99
