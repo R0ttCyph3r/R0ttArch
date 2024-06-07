@@ -109,8 +109,4 @@ fi
 alias htb_ip="ifconfig tun0"
 alias ls='lsd --group-directories-first'
 alias ll='lsd -la --group-directories-first'
-alias fix_mirrors="sudo reflector --country 'India' --latest 5 --age 2 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
-alias ligolo="/home/r0ttcyph3r/tools/ligolo-ng/ligolo.sh"
-alias ws="python3 -m http.server 80"
-
-export PATH=$PATH:/home/r0ttcyph3r/.spicetify
+alias fix_mirrors="sudo reflector --country 'United States' --latest 5 --age 2 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
