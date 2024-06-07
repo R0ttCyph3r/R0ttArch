@@ -65,6 +65,61 @@ install_packages_with_yay() {
     echo -e "\033[1;32mPackages installed successfully.\033[0m"
 }
 
+# Function to install Sliver
+install_sliver() {
+    echo -e "\033[1;34mInstalling Sliver...\033[0m"
+    curl https://sliver.sh/install | sudo bash
+    echo -e "\033[1;32mSliver installed successfully.\033[0m"
+}
+
+# Function to clone repository and copy files
+rice() {
+    echo -e "\033[1;34mCloning R0ttArch repository...\033[0m"
+    git clone https://github.com/R0ttCyph3r/R0ttArch
+    cd R0ttArch/config
+    cp -r * ~/.config
+    cd ..
+    cp -r wallpapers ~/wallpapers
+    cp .zshrc ~/.zshrc
+    echo -e "\033[1;32mFiles copied successfully.\033[0m"
+}
+
+change_user_shell() {
+    local USERNAME=$(logname)
+    if [ "$SHELL" != "/usr/bin/zsh" ]; then
+        echo -e "\033[1;34mChanging shell to /usr/bin/zsh for user $USERNAME...\033[0m"
+        chsh -s /usr/bin/zsh $USERNAME
+        echo -e "\033[1;32mShell changed to /usr/bin/zsh for user $USERNAME.\033[0m"
+    else
+        echo -e "\033[1;33mShell is already /usr/bin/zsh. Skipping...\033[0m"
+    fi
+}
+
+post_install_setup() {
+    # Overwrite /usr/bin/burpsuite
+    local burpsuite_file="/usr/bin/burpsuite"
+    local burpsuite_content='#!/bin/sh
+exec /usr/lib/jvm/java-22-openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED -jar /usr/share/burpsuite/burpsuite.jar $@'
+    
+    echo "$burpsuite_content" | sudo tee "$burpsuite_file" > /dev/null
+    
+    sudo chmod +x "$target_file"
+
+    # Edit /etc/libvirt/libvirtd.conf
+    sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
+    sudo sed -i 's/#unix_sock_ro_perms = "0777"/unix_sock_ro_perms = "0770"/' /etc/libvirt/libvirtd.conf
+
+    # Add user to libvirt group
+    sudo gpasswd -a $USER libvirt
+
+    # Enable services
+    sudo systemctl enable sliver.service
+    sudo systemctl enable libvirtd.service
+    sudo systemctl enable postgresql.service
+    sudo archlinux-java set java-11-openjdk
+
+    echo -e "\033[1;32mPost-installation setup completed.\033[0m"
+}
 
 # Function to add localhost and hostname entries to /etc/hosts
 add_entries_to_hosts() {
@@ -213,9 +268,13 @@ Include = /etc/pacman.d/archstrike-mirrorlist"
 install_packages
 install_yay
 install_packages_with_yay
+install_sliver
 install_chaotic_aur
 install_athena_os
 install_blackarch
 install_archstrike
+post_install_setup
+rice
+change_user_shell
 
 echo -e "\033[1;32mSetup have been successfully completed. Please reboot the system.\033[0m"
