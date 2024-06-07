@@ -18,7 +18,7 @@ install_packages() {
         papirus-icon-theme mariadb virt-manager virt-viewer qemu-full bridge-utils libguestfs dnsmasq vde2 \
         reflector pacman-contrib dunst rofi jq xclip imagemagick libwebp webp-pixbuf-loader xdo xdotool \
         xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xwininfo xbacklight xbindkeys xvkbd xinput \
-        python-gobject tcpdump openvpn ntp net-tools sqlmap dbeaver bind-tools hydra rlwrap openbsd-netcat \
+        python-gobject flameshot tcpdump openvpn ntp net-tools sqlmap dbeaver bind-tools hydra rlwrap openbsd-netcat \
         proxychains-ng python-requests tree sshpass sshuttle postgresql-old-upgrade postgresql exploitdb socat \
         --needed --noconfirm
     echo -e "\033[1;32mRequired packages installed.\033[0m"
