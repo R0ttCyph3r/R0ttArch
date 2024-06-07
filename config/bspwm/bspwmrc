@@ -1,0 +1,45 @@
+#! /bin/sh
+
+# Fix Java Applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d 1 2 3 4 5 6 7 8
+
+bspc config border_width         2
+bspc config window_gap           15
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      false
+
+bspc config focus_follows_pointer     true
+bspc config pointer_follows_focus     false
+bspc config pointer_motion_interval   5
+
+bspc config focused_border_color "#7aa2f7"
+bspc config normal_border_color "#1a1b26"
+bspc config active_border_color "#7aa2f7"
+bspc config presel_feedback_color "#7aa2f7"
+
+# Set Wallpaper
+feh -z --no-fehbg --bg-fill $HOME/wallpapers/astronaut.png
+
+# Fix Cursor
+xsetroot -cursor_name left_ptr &
+
+# Turn Off Auto Screen TimeOut
+xset -dpms &
+xset s off &
+
+# Picom
+pidof -q picom || { picom --config "$HOME"/.config/picom/picom.conf & }
+
+# Polybar
+"$HOME"/.config/polybar/launch.sh &
+
+# Dunst
+dunst -config "$HOME"/.config/bspwm/dunstrc &
+
+xrandr --output HDMI-1 --mode 1920x1080 --rate 74.99
