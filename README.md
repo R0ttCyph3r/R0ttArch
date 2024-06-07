@@ -8,6 +8,6 @@ These are some important key bindings rest you can read from sxhkdrc.
 | <kbd>super</kbd> + <kbd>@space</kbd>               | Apps Menu.               |
 | <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd>   | Restart bspwm.           |
 | <kbd>super</kbd> + <kbd>q</kbd>                    | Quit current window      |
-| <kbd>super</kbd> + <kbd><-</kbd> <kbd>-></kbd>     | Switch between workspace |
+| <kbd>super</kbd> + <kbd>left arrow</kbd> <kbd>right arrow</kbd>     | Switch between workspace |
 | <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>s</kbd> | Screenshot               |
 
