@@ -17,7 +17,7 @@ install_packages() {
         ttf-inconsolata ttf-joypixels noto-fonts noto-fonts-emoji noto-fonts-extra awesome-terminal-fonts \
         papirus-icon-theme mariadb virt-manager virt-viewer qemu-full bridge-utils libguestfs dnsmasq vde2 \
         reflector pacman-contrib dunst rofi jq xclip imagemagick libwebp webp-pixbuf-loader xdo xdotool \
-        xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xwininfo xbacklight xbindkeys xvkbd xinput \
+        xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xwininfo xbindkeys xvkbd \
         python-gobject flameshot tcpdump openvpn ntp net-tools sqlmap dbeaver bind-tools hydra rlwrap openbsd-netcat \
         proxychains-ng python-requests tree sshpass sshuttle postgresql-old-upgrade postgresql exploitdb socat \
         --needed --noconfirm
