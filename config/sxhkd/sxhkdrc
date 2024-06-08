@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	/home/r0ttcyph3r/.config/rofi/launchers/type-7/launcher.sh
+	~/.config/rofi/launchers/type-7/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
