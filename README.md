@@ -1,4 +1,4 @@
-# R0ttArch
+# R0ttArch (for bare metal with nvidia)
 
 **Before using this repo I assume you already know somewhat of bspwm and using arch for a reasonable amount of time. This repo is for the purpose of automating installation of tools and some configs.**
 
