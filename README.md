@@ -33,6 +33,11 @@ sudo downgrade ruby-json
 
 from the options select 9th which is `2.6.3` version and hit enter it will ask to add this package to `Ignore Packages` choose yes.
 
+Also add `burpsuite` to `Ignored Packages` in `/etc/pacman.conf` like below.
+
+![image](https://github.com/R0ttCyph3r/R0ttArch/assets/146866845/eb696c80-8264-428c-9b7a-7bc99a26718f)
+
+
 | Tools               | Description       |
 |---------------------|-------------------|
 | nmap                | Network scanner   |
