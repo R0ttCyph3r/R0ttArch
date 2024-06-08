@@ -79,3 +79,6 @@ from the options select 9th which is `2.6.3` version and hit enter it will ask t
 
 ![image](https://github.com/R0ttCyph3r/R0ttArch/assets/146866845/5440e43f-ddc9-4ad4-820d-646070d25dbd)
 
+![image](https://github.com/R0ttCyph3r/R0ttArch/assets/146866845/d2b294e0-c3ae-4ebf-99e3-72095b842c60)
+
+Check out [NvChad](https://nvchad.com/docs/quickstart/install/) if you want nvim like me 
