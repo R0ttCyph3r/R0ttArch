@@ -31,7 +31,7 @@ uncomment
 sudo downgrade ruby-json
 ```
 
-from the options select 9th which is `2.6.3` version and hit enter it will ask to add this package to `Ignore Packages` choose yes.
+from the options select 9th which is `2.6.3` version and hit enter it will ask to add this package to `Ignored Packages` choose yes.
 
 Also add `burpsuite` to `Ignored Packages` in `/etc/pacman.conf` like below.
 
