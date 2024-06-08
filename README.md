@@ -1,5 +1,7 @@
 # R0ttArch (for bare metal with nvidia)
 
+![R0ttArch](https://github.com/R0ttCyph3r/R0ttArch/blob/main/R0ttArch.png)
+
 **Before using this repo I assume you already know somewhat of bspwm and using arch for a reasonable amount of time. This repo is for the purpose of automating installation of tools and some configs.**
 
 These are some important key bindings rest you can read from sxhkdrc.
