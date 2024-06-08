@@ -9,7 +9,7 @@ fi
 install_packages() {
     echo -e "\033[1;34mInstalling required packages...\033[0m"
     sudo pacman -Syy \
-        opencl-nvidia hashcat inetutils base-devel git nmap dirsearch feroxbuster feh lsd lxappearance john \
+        opencl-nvidia hashcat bspwm sxhkd inetutils base-devel git nmap dirsearch feroxbuster feh lsd lxappearance john \
         docker docker-compose gobuster ffuf xorg-xsetroot rustup ruby unzip picom polybar plocate python2 \
         ntfs-3g nemo neovim firefox alacritty zsh zsh-autosuggestions zsh-history-substring-search \
         zsh-completions zsh-syntax-highlighting ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd \
