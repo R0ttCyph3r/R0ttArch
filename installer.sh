@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(id -u)" = 0 ]; then
+    echo "This script MUST NOT be run as root user."
+    exit 1
+fi
+
 # Function to install required packages
 install_packages() {
     echo -e "\033[1;34mInstalling required packages...\033[0m"
