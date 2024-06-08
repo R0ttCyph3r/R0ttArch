@@ -76,3 +76,6 @@ from the options select 9th which is `2.6.3` version and hit enter it will ask t
 
 
 ![image](https://github.com/R0ttCyph3r/R0ttArch/assets/146866845/2526ed8c-287b-4c6d-8a17-600043773c1a)
+
+![image](https://github.com/R0ttCyph3r/R0ttArch/assets/146866845/5440e43f-ddc9-4ad4-820d-646070d25dbd)
+
