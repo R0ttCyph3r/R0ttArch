@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Function to check if script is run as sudo
-if [ "$EUID" -ne 0 ]; then
-    echo -e "\033[1;31mPlease run as root.\033[0m"
-    exit 1
-fi
-
 # Function to install required packages
 install_packages() {
     echo -e "\033[1;34mInstalling required packages...\033[0m"
@@ -59,17 +53,25 @@ install_packages_with_yay() {
 
     echo -e "\033[1;34mInstalling packages using yay...\033[0m"
     for package in "${packages[@]}"; do
-        echo -e "\033[1;34mInstalling $package...\033[0m"
-        yay -S "$package" --answerclean None --answerdiff None --noconfirm
+        if yay -Q "$package" &> /dev/null; then
+            echo -e "\033[1;33m$package is already installed. Skipping...\033[0m"
+        else
+            echo -e "\033[1;34mInstalling $package...\033[0m"
+            yay -S "$package" --answerclean None --answerdiff None --noconfirm
+        fi
     done
     echo -e "\033[1;32mPackages installed successfully.\033[0m"
 }
 
 # Function to install Sliver
 install_sliver() {
-    echo -e "\033[1;34mInstalling Sliver...\033[0m"
-    curl https://sliver.sh/install | sudo bash
-    echo -e "\033[1;32mSliver installed successfully.\033[0m"
+    if command -v sliver &> /dev/null; then
+        echo -e "\033[1;33mSliver is already installed. Skipping...\033[0m"
+    else
+        echo -e "\033[1;34mInstalling Sliver...\033[0m"
+        curl https://sliver.sh/install | sudo bash
+        echo -e "\033[1;32mSliver installed successfully.\033[0m"
+    fi
 }
 
 # Function to clone repository and copy files
@@ -102,8 +104,7 @@ post_install_setup() {
 exec /usr/lib/jvm/java-22-openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED -jar /usr/share/burpsuite/burpsuite.jar $@'
     
     echo "$burpsuite_content" | sudo tee "$burpsuite_file" > /dev/null
-    
-    sudo chmod +x "$target_file"
+    sudo chmod +x "$burpsuite_file"
 
     # Edit /etc/libvirt/libvirtd.conf
     sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
@@ -176,17 +177,17 @@ add_repo_to_pacman_conf() {
 uncomment_line() {
     local file="$1"
     local line_pattern="$2"
-    sed -i "s/^#\s*\($line_pattern\)/\1/" "$file"
+    sudo sed -i "s/^#\s*\($line_pattern\)/\1/" "$file"
 }
 
 # Uncomment the Color line
 uncomment_line "$PACMAN_CONF" "Color"
 
 # Uncomment and change ParallelDownloads line
-sed -i "s/^#\s*ParallelDownloads\s*=.*/ParallelDownloads = 10/" "$PACMAN_CONF"
+sudo sed -i "s/^#\s*ParallelDownloads\s*=.*/ParallelDownloads = 10/" "$PACMAN_CONF"
 
 # Uncomment the [multilib] section and Include line
-sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman\.d\/mirrorlist/ s/^#//' "$PACMAN_CONF"
+sudo sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman\.d\/mirrorlist/ s/^#//' "$PACMAN_CONF"
 
 echo -e "\033[1;33mModifications to $PACMAN_CONF completed.\033[0m"
 
@@ -265,14 +266,14 @@ Include = /etc/pacman.d/archstrike-mirrorlist"
 }
 
 # Installation begins
-install_packages
-install_yay
-install_packages_with_yay
-install_sliver
 install_chaotic_aur
 install_athena_os
 install_blackarch
 install_archstrike
+install_packages
+install_yay
+install_packages_with_yay
+install_sliver
 post_install_setup
 rice
 change_user_shell
