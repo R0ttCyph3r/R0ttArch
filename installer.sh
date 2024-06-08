@@ -121,7 +121,12 @@ exec /usr/lib/jvm/java-22-openjdk/bin/java --add-opens=java.base/java.lang=ALL-U
     sudo systemctl enable sliver.service
     sudo systemctl enable libvirtd.service
     sudo systemctl enable postgresql.service
+
+    # Java Environment setup
     sudo archlinux-java set java-11-openjdk
+
+    # Owning some dirs
+    sudo chown -R $USER:$USER /opt/
 
     echo -e "\033[1;32mPost-installation setup completed.\033[0m"
 }
