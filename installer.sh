@@ -11,7 +11,7 @@ install_packages() {
         ttf-inconsolata ttf-joypixels noto-fonts noto-fonts-emoji noto-fonts-extra awesome-terminal-fonts \
         papirus-icon-theme mariadb virt-manager virt-viewer qemu-full bridge-utils libguestfs dnsmasq vde2 \
         reflector pacman-contrib dunst rofi jq xclip imagemagick libwebp webp-pixbuf-loader xdo xdotool \
-        xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xwininfo xbindkeys xvkbd \
+        xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xwininfo xbindkeys xvkbd wireshark \
         python-gobject flameshot tcpdump openvpn ntp net-tools sqlmap dbeaver bind-tools hydra rlwrap openbsd-netcat \
         proxychains-ng python-requests tree sshpass sshuttle postgresql-old-upgrade postgresql exploitdb socat \
         --needed --noconfirm
@@ -38,17 +38,16 @@ install_packages_with_yay() {
     local packages=(
         "evil-winrm"
         "python-impacket-git"
-        "netexec"
+        "aur/netexec"
         "burpsuite"
-        "aur/bloodhound"
+        "bloodhound"
         "downgrade"
         "metasploit"
         "aur/python-pypykatz"
-        "wireshark"
         "seclists"
         "rustscan"
         "havoc-c2-git"
-        "aur/wpscan-git"
+        "wpscan-git"
     )
 
     echo -e "\033[1;34mInstalling packages using yay...\033[0m"
