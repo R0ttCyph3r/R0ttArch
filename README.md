@@ -4,6 +4,10 @@
 
 **Before using this repo I assume you already know somewhat of bspwm and using arch for a reasonable amount of time. This repo is for the purpose of automating installation of tools and some configs.**
 
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/R0ttCyph3r/R0ttArch/main/installer.sh)"
+```
+
 These are some important key bindings rest you can read from sxhkdrc.
 
 | Keys                                               | Action                   |
